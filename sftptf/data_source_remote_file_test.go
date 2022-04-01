@@ -37,7 +37,7 @@ func TestDataSourceRemoteFileSchema(t *testing.T) {
 	}
 
 	attributeKeys := []string{
-		mkDataSourceRemoteFileContents,
+		mkDataSourceRemoteFileContentsb64,
 		mkDataSourceRemoteFileLastModified,
 		mkDataSourceRemoteFileSize,
 	}

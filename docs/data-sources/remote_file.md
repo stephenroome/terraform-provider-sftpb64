@@ -1,19 +1,19 @@
 ---
 layout: page
-title: sftp_remote_file
+title: sftpb64_remote_file
 permalink: /data-sources/remote_file
 nav_order: 1
 parent: Data Sources
 ---
 
-# Data Source: sftp_remote_file
+# Data Source: sftpb64_remote_file
 
-Retrieves the contents of a remote file.
+Retrieves the base64 encoded contents of a remote file.
 
 ## Example Usage
 
 ```
-data "sftp_remote_file" "some_configuration_file" {
+data "sftpb64_remote_file" "some_configuration_file" {
   host        = "10.0.0.2"
   user        = "root"
   path        = "/etc/some/configuration.file"
@@ -41,6 +41,6 @@ resource "tls_private_key" "automation_key" {
 
 ## Attribute Reference
 
-* `contents` - The file contents.
+* `contentsb64` - The file contents.
 * `last_modified` - The last modified timestamp of the file.
 * `size` - The file size (in bytes).

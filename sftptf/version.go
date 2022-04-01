@@ -6,8 +6,8 @@ package sftptf
 
 const (
 	// TerraformProviderName specifies the full name of this provider.
-	TerraformProviderName = "terraform-provider-sftp"
+	TerraformProviderName = "terraform-provider-sftpb64"
 
 	// TerraformProviderVersion specifies the version number.
-	TerraformProviderVersion = "0.2.0"
+	TerraformProviderVersion = "0.0.1a"
 )

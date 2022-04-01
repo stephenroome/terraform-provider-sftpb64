@@ -5,7 +5,7 @@
 package main
 
 import (
-	"github.com/danitso/terraform-provider-sftp/sftptf"
+	"github.com/stephenroome/terraform-provider-sftpb64/sftptf"
 	"github.com/hashicorp/terraform-plugin-sdk/plugin"
 	"github.com/hashicorp/terraform-plugin-sdk/terraform"
 )

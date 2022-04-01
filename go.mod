@@ -1,4 +1,4 @@
-module github.com/danitso/terraform-provider-sftp
+module github.com/stephenroome/terraform-provider-sftpb64
 
 go 1.15
 
@@ -33,7 +33,6 @@ require (
 	github.com/posener/complete v1.2.3 // indirect
 	github.com/spf13/afero v1.5.1 // indirect
 	github.com/ulikunitz/xz v0.5.10 // indirect
-	github.com/vmihailenco/msgpack v4.0.4+incompatible // indirect
 	github.com/vmihailenco/tagparser v0.1.2 // indirect
 	github.com/zclconf/go-cty v1.7.1 // indirect
 	github.com/zclconf/go-cty-yaml v1.0.2 // indirect

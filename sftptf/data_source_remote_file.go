@@ -10,6 +10,7 @@ import (
 	"fmt"
 	"io"
 	"time"
+	"encoding/base64"
 
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/pkg/sftp"
@@ -18,7 +19,7 @@ import (
 
 const (
 	mkDataSourceRemoteFileAllowMissing = "allow_missing"
-	mkDataSourceRemoteFileContents     = "contents"
+	mkDataSourceRemoteFileContentsb64  = "contentsb64"
 	mkDataSourceRemoteFileHost         = "host"
 	mkDataSourceRemoteFileHostKey      = "host_key"
 	mkDataSourceRemoteFileLastModified = "last_modified"
@@ -41,12 +42,6 @@ func dataSourceRemoteFile() *schema.Resource {
 				Description: "Whether to ignore that the file is missing",
 				Optional:    true,
 				Default:     false,
-				ForceNew:    true,
-			},
-			mkDataSourceRemoteFileContents: {
-				Type:        schema.TypeString,
-				Description: "The file contents",
-				Computed:    true,
 				ForceNew:    true,
 			},
 			mkDataSourceRemoteFileHost: {
@@ -240,7 +235,7 @@ func dataSourceRemoteFileRead(d *schema.ResourceData, m interface{}) error {
 		if allowMissing {
 			d.SetId("missing")
 
-			d.Set(mkDataSourceRemoteFileContents, "")
+			d.Set(mkDataSourceRemoteFileContentsb64, "")
 			d.Set(mkDataSourceRemoteFileLastModified, time.Now().Format(time.RFC3339))
 			d.Set(mkDataSourceRemoteFileSize, -1)
 
@@ -267,7 +262,7 @@ func dataSourceRemoteFileRead(d *schema.ResourceData, m interface{}) error {
 
 	d.SetId(remoteFileInfo.Name())
 
-	d.Set(mkDataSourceRemoteFileContents, buffer.String())
+	d.Set(mkDataSourceRemoteFileContentsb64, base64.StdEncoding.EncodeToString([]byte(buffer.String())))
 	d.Set(mkDataSourceRemoteFileLastModified, remoteFileInfo.ModTime().Format(time.RFC3339))
 	d.Set(mkDataSourceRemoteFileSize, int(remoteFileInfo.Size()))
 
