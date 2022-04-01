@@ -44,6 +44,12 @@ func dataSourceRemoteFile() *schema.Resource {
 				Default:     false,
 				ForceNew:    true,
 			},
+                        mkDataSourceRemoteFileContentsb64: {
+                                Type:        schema.TypeString,
+                                Description: "base64 encoded file contents",
+                                Computed:    true,
+                                ForceNew:    true,
+                        },
 			mkDataSourceRemoteFileHost: {
 				Type:        schema.TypeString,
 				Description: "The hostname",
